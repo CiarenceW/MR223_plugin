@@ -23,6 +23,7 @@ namespace MR223_plugin
         private Vector3 magazine_pos = new Vector3(-0.1f, 0f, 0.15f);
         private RotateMover dust_cover = new RotateMover();
         private bool dust_cover_opened;
+        private bool slide_prepare_to_lock;
         private bool separator_needs_reset;
         private static bool receiver_broke_open;
         private readonly float[] slide_push_hammer_curve = new float[] {
@@ -123,7 +124,9 @@ namespace MR223_plugin
             hammer.asleep = true;
             hammer.accel = hammer_accel;
 
-            if (player_input.GetButton(Action.Slide_Lock)) //slide stop held mechanic
+            if((player_input.GetButton(Action.Pull_Back_Slide) && player_input.GetButton(Action.Slide_Lock)) && slide.amount >= slide_lock_position) slide_prepare_to_lock = true; //slide stop held mechanic preventer :(
+
+            if (!slide_prepare_to_lock && player_input.GetButton(Action.Slide_Lock)) //slide stop held mechanic
             {
                 _slide_stop_locked = false;
                 slide_stop.target_amount = 0f;
