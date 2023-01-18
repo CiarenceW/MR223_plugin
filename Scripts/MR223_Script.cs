@@ -19,7 +19,7 @@ namespace MR223_plugin
         public Transform dust_cover_component;
         private Vector3 magazine_nearly_empty_rot = new Vector3(-24f, -5f, 0f);
         private Vector3 magazine_nearly_empty_pos = new Vector3(-0.1f, 0f, 0.2f);
-        private Vector3 magazine_rot = new Vector3(-35f, -80f, 0f);
+        private Vector3 magazine_rot = new Vector3(-25f, -60f, 0f);
         private Vector3 magazine_pos = new Vector3(-0.1f, 0f, 0.15f);
         private RotateMover dust_cover = new RotateMover();
         private bool dust_cover_opened;
@@ -43,9 +43,9 @@ namespace MR223_plugin
                             + "\n"
                             + "Based on the AR-15 platform, the HK 416 improves on it thanks to its proprietary short-stroke gas piston, derived from the G36, itself derived from the AR-18. Thanks to this improvement, the H&K 416 outperformed the M4 in numerous tests conducted by the US Army's Delta Force.\n"
                             + "\n"
-                            + "In 2007, H&K introduced the MR223, the civilian variant of the 416, to the European market. This variant would later come to the US under the name of MR556."
+                            + "In 2007, H&K introduced the MR223, the civilian variant of the 416, to the European market. This variant would later come to the US under the name of MR556.\n"
                             + "\n"
-                            + " In order to be compliant in states with stricter gun laws, civilians need to install special after-market parts, such as pin that block the magazine from being removed until the receiver is opened, or a slide lock that locks open on every shot. Fortunately for them, loopholes that permit the rifle to function somewhat normally exist."
+                            + "In order to be compliant in states with stricter gun laws, civilians need to install special after-market parts, such as pin that block the magazine from being removed until the receiver is opened, or a slide lock that locks open on every shot. Fortunately for them, loopholes that permit the rifle to function somewhat normally exist."
             };
         }
         public override LocaleTactics GetGunTactics()
@@ -61,16 +61,16 @@ namespace MR223_plugin
                        "To safely holster the MR223, flip on the safety."
             };
         }
-        [HarmonyPatch(typeof(GunScript), "RemoveMag")]
+        /*[HarmonyPatch(typeof(GunScript), "RemoveMag")]
         [HarmonyPrefix]
         private static void patchRemoveMag(ref GunScript __instance)
         {
             MagazineScript magazine = __instance.magazine_instance_in_gun;
-            if (receiver_broke_open)
+            if (!receiver_broke_open)
             {
                 return;
             }
-        }
+        }*/
         public override void InitializeGun()
         {
             pooled_muzzle_flash = ((GunScript)ReceiverCoreScript.Instance().generic_prefabs.First(it => { return it is GunScript && ((GunScript)it).gun_model == GunModel.Deagle; })).pooled_muzzle_flash;
@@ -123,16 +123,18 @@ namespace MR223_plugin
             hammer.asleep = true;
             hammer.accel = hammer_accel;
 
-            if (player_input.GetButtonDown(Action.Slide_Lock))
+            if (player_input.GetButton(Action.Slide_Lock)) //slide stop held mechanic
             {
                 _slide_stop_locked = false;
                 slide_stop.target_amount = 0f;
+                StopSlideStop();
             }
-            else if (!player_input.GetButton(Action.Slide_Lock) && slide.vel < 0f && slide.amount > slide_lock_position)
+            else if (!player_input.GetButton(Action.Slide_Lock) && slide.vel < 0f && slide.amount > slide_lock_position) //slide force lock mechanic
             {
+                _slide_stop_locked = true;
                 slide_stop.target_amount = 1f;
                 slide_stop.UpdateDisplay();
-                _slide_stop_locked = true;
+                StartSlideStop();
             }
 
             /*if (!receiver_broke_open)
