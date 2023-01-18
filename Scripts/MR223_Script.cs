@@ -44,6 +44,8 @@ namespace MR223_plugin
                             + "Based on the AR-15 platform, the HK 416 improves on it thanks to its proprietary short-stroke gas piston, derived from the G36, itself derived from the AR-18. Thanks to this improvement, the H&K 416 outperformed the M4 in numerous tests conducted by the US Army's Delta Force.\n"
                             + "\n"
                             + "In 2007, H&K introduced the MR223, the civilian variant of the 416, to the European market. This variant would later come to the US under the name of MR556."
+                            + "\n"
+                            + " In order to be compliant in states with stricter gun laws, civilians need to install special after-market parts, such as pin that block the magazine from being removed until the receiver is opened, or a slide lock that locks open on every shot. Fortunately for them, loopholes that permit the rifle to function somewhat normally exist."
             };
         }
         public override LocaleTactics GetGunTactics()
@@ -53,7 +55,8 @@ namespace MR223_plugin
                 gun_internal_name = InternalName,
                 title = "Heckler & Koch MR223\n",
                 text = "A modded semi-auto rifle, made on a cheese-based diet\n" +
-                       "A .223 Remington semi-auto rifle made for the European sporting market, this gun functions mechanically the same as the H&K 416, without the auto fire mode..\n" +
+                       "A .223 Remington semi-auto rifle made for the European sporting market, this gun functions mechanically the same as the H&K 416, without the auto fire mode.\n" +
+                       "This version of the gun is fitted with an auto-locking slide lock in an attempt to be California compliant.\n"+
                        "To safely holster the MR223, flip on the safety."
             };
         }
@@ -265,8 +268,6 @@ namespace MR223_plugin
 
             slide_stop.UpdateDisplay();
 
-            ApplyTransform("point_chambered_round", slide.amount, transform.Find("slide/point_chambered_round"));
-            ApplyTransform("bolt", slide.amount, transform.Find("slide/bolt"));
             UpdateAnimatedComponents();
         }
         private void ToggleDustCover()
