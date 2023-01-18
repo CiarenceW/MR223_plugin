@@ -19,13 +19,13 @@ If you run into an issue, create an issue in the Issues tab on GitHub, with a sc
  ~/Library/Application Support/Wolfire Games/Receiver2/Guns – Mac OS<br />
  ~/.config_unity3d/Wolfire Games/Receiver2/Guns – Linux <br />
  - Copy the file called _"MR223_plugin"_ in **MR223_(OS).rar** to (where you have R2 installed) **Receiver 2\BepinEx\plugins**
- - If you haven't already, create 3 folders called "**PlayerLoadout**", "**WorldGenerationConfig**" and "**RankingProgressionCampaigns**" in %UserProfile%\AppData\LocalLow\Wolfire Games\Receiver2 for the custom campaign to appear.
  ## Usage
  - Go to the debug menu, and start the custom campaign, or go to the debug menu and spawn the gun + mag in.<br>
  - Yes the slide locking on every shot is intended.<br>
- - The reflex sight is zeroed at around ~40m
+ - The reflex sight is zeroed at around ~40m.<br>
+ - Most important feature: the dust cover can be closed and opened!
 ## Credits
- Szikaka for all his continued assistance, for the new version of the modding kit, and for the reflex shader that he also took from someone else (nice) </br>
+ Szikaka for all his continued assistance, for the new version of the modding kit, and for the reflex shader that he also modified from someone else (nice) </br>
  Wolfire for this game (I NEED UPDATE)</br>
  BSG for the sounds, models, and textures</br>
  Textures and mesh modified by me (Ciarence#6364) </br>
