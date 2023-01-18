@@ -56,6 +56,7 @@ namespace MR223_plugin
                 title = "Heckler & Koch MR223\n",
                 text = "A modded semi-auto rifle, made on a cheese-based diet\n" +
                        "A .223 Remington semi-auto rifle made for the European sporting market, this gun functions mechanically the same as the H&K 416, without the auto fire mode.\n" +
+                       "\n" +
                        "This version of the gun is fitted with an auto-locking slide lock in an attempt to be California compliant.\n"+
                        "To safely holster the MR223, flip on the safety."
             };
