@@ -125,6 +125,7 @@ namespace MR223_plugin
             hammer.accel = hammer_accel;
 
             if((player_input.GetButton(Action.Pull_Back_Slide) && player_input.GetButton(Action.Slide_Lock)) && slide.amount >= slide_lock_position) slide_prepare_to_lock = true; //slide stop held mechanic preventer :(
+            if(slide.amount == 0f) slide_prepare_to_lock = false;
 
             if (!slide_prepare_to_lock && player_input.GetButton(Action.Slide_Lock)) //slide stop held mechanic
             {
@@ -284,7 +285,7 @@ namespace MR223_plugin
                 dust_cover.target_amount = 0f;
                 dust_cover.accel = -1f;
                 dust_cover.vel = -10f;
-                AudioManager.PlayOneShotAttached(sound_safety_off, dust_cover.transform.gameObject);
+                AudioManager.PlayOneShotAttached(sound_cylinder_close, dust_cover.transform.gameObject);
                 dust_cover_opened = false;
             }
             else if (dust_cover_opened == false)
@@ -292,7 +293,7 @@ namespace MR223_plugin
                 dust_cover.target_amount = 1f;
                 dust_cover.accel = 1;
                 dust_cover.vel = 10;
-                AudioManager.PlayOneShotAttached(sound_safety_on, dust_cover.transform.gameObject);
+                AudioManager.PlayOneShotAttached(sound_cylinder_open, dust_cover.transform.gameObject);
                 dust_cover_opened = true;
             }
 
