@@ -46,7 +46,7 @@ namespace MR223_plugin
                             + "\n"
                             + "In 2007, H&K introduced the MR223, the civilian variant of the 416, to the European market. This variant would later come to the US under the name of MR556.\n"
                             + "\n"
-                            + "In order to be compliant in states with stricter gun laws, civilians need to install special after-market parts, such as pin that block the magazine from being removed until the receiver is opened, or a slide lock that locks open on every shot. Fortunately for them, loopholes that permit the rifle to function somewhat normally exist."
+                            + "In order to be compliant in states with stricter gun laws, civilians need to install special after-market parts, such as a pin that blocks the magazine from being removed until the receiver is opened, or a slide lock that locks open on every shot. Fortunately for them, loopholes that permit the rifle to function somewhat normally exist."
             };
         }
         public override LocaleTactics GetGunTactics()
@@ -137,7 +137,6 @@ namespace MR223_plugin
             {
                 _slide_stop_locked = true;
                 slide_stop.target_amount = 1f;
-                slide_stop.UpdateDisplay();
                 StartSlideStop();
             }
 
@@ -217,7 +216,7 @@ namespace MR223_plugin
                 m_charging_handle_amount = Mathf.Min(m_charging_handle_amount, slide.amount);
             }
 
-            if ((lah.character_input.GetButtonDown(14) && lah.IsHoldingGun) || (!dust_cover_opened && slide.amount > 0.05f)) //dust cover opening/closing logic
+            if ((lah.character_input.GetButtonDown(14) && lah.IsHoldingGun) || (!dust_cover_opened && slide.amount > 0.03f)) //dust cover opening/closing logic
             {
                 ToggleDustCover();
             }
