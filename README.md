@@ -1,7 +1,8 @@
 # MR223_plugin
 The latest CA compliant ~~torture device~~ semi-auto rifle for Receiver 2!<br>
 
-Also check out: [MagLoaderThing](https://github.com/CiarenceW/MagLoaderThing), this un-cuts a thing in the Compound that makes reloading big magazines less of a chore
+Also check out: [MagLoaderThing](https://github.com/CiarenceW/MagLoaderThing), this un-cuts a thing in the Compound that makes reloading big magazines less of a chore  
+And [this](https://github.com/CiarenceW/r2_CustomCompoundAmmoBoxes) as well, it adds ammo boxes for modded cartridges in the Compound, with possibilities of adding custom models for them too!
 
 <image align="center" src="coolpic/thebeatingofamilliondrums.png">
 
